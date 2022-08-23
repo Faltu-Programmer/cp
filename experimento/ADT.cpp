@@ -130,29 +130,8 @@ void ADT::insert (int index, int value)
     int currSize = getSize();
     int currLength = getLength();
 
-    if(currLength < index and index < currSize)
-    {
-        basePtr[index] = value;
-        return;
-    }
+    if(index < currSize)
 
-    if(!(currLength < currSize))
-    {
-        int largeSize = currSize*2;
-        largerArray(largeSize);
-        setSize(largeSize);
-    }
-
-    for(int itr = currLength; itr >= index; --itr)
-    {
-        if(itr == index)
-        {
-            basePtr[index] = value;
-            setLength(currLength+1);
-            break;
-        }
-        basePtr[itr] = basePtr[itr-1];
-    }
 
 }
 
@@ -185,11 +164,11 @@ ADT::~ADT()
 int main ()
 {
     ADT obj(5);
-    for (int i=0; i< 5; i++)
+    for (int i=0; i < 3; i++)
     {
         obj._append (i+1);
     }
-	obj.insert(7,45);
+	obj.insert(4,45);
     obj.display();
     std::cout << obj.getLength() << " " << obj.getSize() << "\n";
 
