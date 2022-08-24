@@ -1,8 +1,9 @@
-﻿#include "ADT.h"
+﻿#include "T_ADT.h"
 #include<iostream>
 
 
-ADT::ADT(int size)
+template<class T>
+T_ADT<T>::T_ADT (int size)
 {
     /// size can not be -ve.
     if(size < 0){size = 0;}
@@ -10,44 +11,53 @@ ADT::ADT(int size)
     this->Size = size;
     Length = 0;
 }
-ADT::ADT() : ADT(0)
+template<class T>
+T_ADT<T> :: T_ADT() : T_ADT(0)
 {
     //size = length = 0;
 }
 
-int ADT::getSize ()
+template<class T>
+int T_ADT<T> :: getSize ()
 {
     return this->Size;
 }
-int ADT::getLength()
+template<class T>
+int T_ADT<T> :: getLength()
 {
     return this->Length;
 }
 
-void ADT::setSize(int size)
+template<class T>
+void T_ADT<T> :: setSize(int size)
 {
     /// need to create new array and copy
     ///everything for old to new one.....
     this->Size = size;
     
 }
-void ADT::setLength(int length)
+template<class T>
+void T_ADT<T> :: setLength(int length)
 {
     if(!(length < 0))
     {
         this->Length = length;
     }
 }
-int* ADT::begin()
+
+template<class T>
+T* T_ADT<T> :: begin()
 {
     return this->basePtr;
 }
-int* ADT::end()
+template<class T>
+T* T_ADT<T> :: end ()
 {
     return this->basePtr+getSize();
 }
 
-void ADT::display()
+template<class T>
+void T_ADT<T> :: display ()
 {
     int length = getLength();
     for(int itr = 0; itr < length; ++itr)
@@ -57,10 +67,11 @@ void ADT::display()
     std::cout << "\n";
 }
 
-void ADT::largerArray ()
+template<class T>
+void T_ADT<T> :: largerArray ()
 {
 	int currSize = getSize()<<1;
-    int* tempArray = new int [currSize];
+    T* tempArray = new T [currSize];
 
     for(int itr = 0; itr < getLength(); itr++)
     {
@@ -75,7 +86,8 @@ void ADT::largerArray ()
 }
 
 // /adding a value at the end of the array ....
-void ADT::add (int value)
+template<class T>
+void T_ADT<T> :: add (T value)
 {
     int currSize = getSize();
     int currLength = getLength();
@@ -89,13 +101,15 @@ void ADT::add (int value)
     setLength(currLength+1);
 }
 // /appending a value at the end of the array ....
-void ADT::_append (int value)
+template<class T>
+void T_ADT<T> :: _append (T value)
 {
     add(value);
 }
 
 // inserting value at a given index ...
-void ADT::insert (int index, int value)
+template<class T>
+void T_ADT<T> :: insert (int index, T value)
 {
     int currSize = getSize();
     int currLength = getLength();
@@ -116,7 +130,8 @@ void ADT::insert (int index, int value)
 }
 
 /// deleting value at a given index
-void ADT::_delete(int index)
+template<class T>
+void T_ADT<T> :: _delete (int index)
 {
     int currLength = getLength()-1;
     
@@ -135,12 +150,13 @@ void ADT::_delete(int index)
 }
 
 /// searching a value and returning the index, if not present then returning -1
-int ADT::search (int value)
+template<class T>
+int T_ADT<T> :: search (T value)
 {
 	int length = getLength();
 	int index = -1;
 	
-	for(int i=0;i<length;i++)
+	for (int i=0;i<length;i++)
 	{
 		if(basePtr[i] == value)
 		{
@@ -151,7 +167,8 @@ int ADT::search (int value)
 	return index;
 } 
 /// returning a value at given index ....
-int ADT::get(int index)
+template<class T>
+T T_ADT<T> :: get (int index)
 {
 	int currLength = getLength();
 	
@@ -161,7 +178,8 @@ int ADT::get(int index)
 	}
 	return basePtr[index];
 }
-void ADT::set (int index, int value)
+template<class T>
+void T_ADT<T> :: set (int index, T value)
 {
 	int currLength = getLength();
 	
@@ -172,13 +190,14 @@ void ADT::set (int index, int value)
 	basePtr[index] = value;
 }
 
-int ADT::mx ()
+template<class T>
+T T_ADT<T> :: mx ()
 {
 	int currLength = getLength();
-	int key = basePtr[0];
+	T key = basePtr[0];
 	for(int i=1;i<currLength;i++)
 	{
-		int tmp = basePtr[i];
+		T tmp = basePtr[i];
 		if(key < tmp)
 		{
 			key = tmp;
@@ -187,13 +206,14 @@ int ADT::mx ()
 	return key;
 }
 
-int ADT::mn ()
+template<class T>
+T T_ADT<T> :: mn ()
 {
 	int currLength = getLength();
-	int key = basePtr[0];
+	T key = basePtr[0];
 	for(int i=1;i<currLength;i++)
 	{
-		int tmp = basePtr[i];
+		T tmp = basePtr[i];
 		if(key > tmp)
 		{
 			key = tmp;
@@ -203,14 +223,17 @@ int ADT::mn ()
 }
 
 /// Dependent function / helper method ....
-void ADT::_swap (int& a, int& b)
+template<class T>
+void T_ADT<T> :: _swap (T& a, T& b)
 {
-	int t = a;
+	T t = a;
 	a = b;
 	b = t;
 }
+
 // reverseing the array .....
-void ADT::reverse ()
+template<class T>
+void T_ADT<T> :: reverse ()
 {
 	int currLength = getLength();
 	int length = currLength/2;
@@ -222,7 +245,8 @@ void ADT::reverse ()
 }
 
 /// rotate by n index right.....
-void ADT::rotate (int index)
+template<class T>
+void T_ADT<T> :: rotate (int index)
 {
 	int currLength = getLength();
 	int currSize = getSize();
@@ -241,14 +265,17 @@ void ADT::rotate (int index)
 	basePtr = tmp;
 	tmp = nullptr;
 }
+
 /// shifted by n index right.....
-void ADT::shift (int index)
+template<class T>
+void T_ADT<T> :: shift (int index)
 {
 	rotate(index);
 }
 
 /// Distructor/Dynamic Distructor....
-ADT::~ADT()
+template<class T>
+T_ADT<T> :: ~T_ADT()
 {
     delete []basePtr;
     basePtr = nullptr;

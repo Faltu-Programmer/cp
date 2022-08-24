@@ -1,16 +1,17 @@
-﻿#ifndef ADT_H
-	#define ADT_H
+﻿#ifndef T_ADT_H
+	#define T_ADT_H
 
 ///#include<iostream>
-class ADT
+template<class T>
+class T_ADT
 {
 private:
-    int *basePtr;
+    T *basePtr;
     int Size;
     int Length;
 public:
-    ADT();
-    ADT(int);
+    T_ADT();
+    T_ADT(int);
 
     /// getter methods ... 
     int getSize ();
@@ -21,8 +22,8 @@ public:
     void setLength(int);
 
     /// iterator methods
-    int* begin();
-    int* end();
+    T* begin();
+    T* end();
 
     /// Display method ...
     void display ();
@@ -30,27 +31,27 @@ public:
     void largerArray ();
 
     /// mutator or manupulator methods
-    void add (int);
-    void _append (int);
+    void add (T);
+    void _append (T);
 
-    void insert (int, int);
+    void insert (int, T);
     void _delete(int);
-    int search (int);
+    int search (T);
     
-    int get(int);
-    void set (int, int);
+    T get(int);
+    void set (int, T);
     
-    int mx();
-    int mn();
+    T mx();
+    T mn();
     
     void reverse ();
     void rotate (int);
     void shift (int);
     
     /// Dependent function / helper method ....     
-    void _swap (int&, int&);
+    void _swap (T&, T&);
     
-    ~ADT();
+    ~T_ADT();
 };
 
 #endif 
