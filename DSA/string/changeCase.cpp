@@ -20,7 +20,11 @@
 	return str;	
 }
 
+<<<<<<< HEAD
 char* changeToCapitalCase (char* str)
+=======
+char* changeToUpperCase (char* str)
+>>>>>>> working
 {
 	int i=0;
 	while (str[i] != '\0')

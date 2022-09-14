@@ -4,7 +4,7 @@
 int main()
 {
 	char *str = "how are you brother..";
-
+	/// scanf("%s",str);
 	int vCnt, cCnt, wCnt=1, sCnt, i;
 	vCnt = cCnt = sCnt = 0;
 	
@@ -32,13 +32,14 @@ int main()
 				}
 		}
 		
-		if(str[i] == ' ') {wCnt++;}
+		if(str[i] == ' ') {sCnt++;}
 	}
 	
-	sCnt = wCnt-1;
+	wCnt += sCnt;
 	printf("vowel = %d\n",vCnt);
 	printf("consonant = %d\n",cCnt);
 	printf("word = %d\n",wCnt);
 	printf("space = %d\n",sCnt);
+	printf("english charcter = %d\n",(vCnt+cCnt));
 	return 0;
 }

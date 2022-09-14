@@ -17,3 +17,7 @@ void printDuplicates (int* arr, int length)
 	}
 	return;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> working

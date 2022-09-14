@@ -31,9 +31,14 @@ int main ()
 			x = x << (str[i]-97);
 			
 			if(hS and x)
+			{
 				printf("duplicate = %c \n",str[i]);
-			
-			hS = hS or x;
+				
+			}
+			else
+			{
+				hS = hS or x;
+			}
 		}
 	}
 	
