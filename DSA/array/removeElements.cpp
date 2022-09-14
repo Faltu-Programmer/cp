@@ -1,4 +1,4 @@
-/// LC EASY 27
+﻿/// LC EASY 27
 /// both approch works...
 
 class Solution 
@@ -19,7 +19,7 @@ public:
         }
         
         /// let see can i do this in a single loop
-        /// * YES I CAN
+        /// *** YES I CAN
         int p= n-1;
         int q= n-cnt;
         

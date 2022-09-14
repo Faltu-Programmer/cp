@@ -13,6 +13,10 @@ int size(char *str)
 	return i;
 }
 
+/*
+	task : do the same using bit masking/merging .
+	if two str is not contain duplicate char
+*/
 
 int main()
 {
